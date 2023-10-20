@@ -5,11 +5,12 @@ from langchain.embeddings import SentenceTransformerEmbeddings
 from langchain.vectorstores import Chroma
 from langchain.llms import HuggingFacePipeline
 from langchain.chains import RetrievalQA
+access_token = "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"
 
 # Model and tokenizer loading
-checkpoint = "LaMini-T5-738M"
-tokenizer = AutoTokenizer.from_pretrained(checkpoint)
-base_model = AutoModelForSeq2SeqLM.from_pretrained(checkpoint)
+checkpoint = "MBZUAI/LaMini-T5-738M"
+tokenizer = AutoTokenizer.from_pretrained(checkpoint,token=access_token)
+base_model = AutoModelForSeq2SeqLM.from_pretrained(checkpoint,token=access_token)
 st.cache_resource()
 def llm_pipeline():
     pipe = pipeline(
